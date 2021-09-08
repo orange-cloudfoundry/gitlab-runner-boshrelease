@@ -1,0 +1,44 @@
+---
+name: gitlab-runner
+
+templates:
+  bpm.yml: config/bpm.yml
+  pre-start: bin/pre-start
+  drain: bin/drain
+
+packages:
+  - gitlab-runner
+
+properties:
+  runner.name:
+    description: Name of the runner as it will appear in Gitlab
+  runner.tags:
+    description: Array of runner tags
+  runner.registration.url:
+    description: URL of Gitlab server to register
+  runner.registration.token:
+    description: Registration token as provided by Gitlab
+  runner.executor:
+    description: Executor used to run builds
+    default: docker
+  runner.docker_image:
+    description: Base image for docker executor
+    default: ubuntu:20.04
+  runner.docker_host:
+    description: Host when using docker executor
+    default: unix:///var/vcap/sys/run/docker/docker.sock
+  runner.docker_privileged:
+    description: Should runner run in privileged mode for docker executor
+    default: true
+  runner.concurent:
+    description: Number of concurent builds
+    default: 10
+  runner.append_index:
+    description: Whether to append the instance group index to the runner name
+    default: false
+  env.http_proxy:
+    description: "HTTP proxy to use"
+  env.https_proxy:
+    description: "HTTPS proxy to use"
+  env.no_proxy:
+    description: "List of comma-separated hosts that should skip connecting to the proxy"

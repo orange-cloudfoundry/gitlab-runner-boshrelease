@@ -1,0 +1,48 @@
+#!/bin/bash
+
+set -e
+
+STORE_DIR=/var/vcap/store/gitlab-runner
+BUILD_DIR=${STORE_DIR}/builds
+CACHE_DIR=${STORE_DIR}/cache
+
+mkdir -p $BUILD_DIR $CACHE_DIR
+chown -R vcap:vcap ${STORE_DIR}
+
+RUNNER_NAME="<%= p('runner.name') %><% if p("runner.append_index") -%>-<%= spec.index %><% end -%>"
+
+
+<% if_p('env.http_proxy') do | proxy | -%>
+export http_proxy=<%= proxy %>
+<% end -%>
+<% if_p('env.https_proxy') do | proxy | -%>
+export https_proxy=<%= proxy %>
+<% end -%>
+<% if_p('env.no_proxy') do | proxy | -%>
+export no_proxy=<%= proxy %>
+<% end -%>
+
+runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
+  --non-interactive \
+  --config ${STORE_DIR}/config.toml \
+  --name ${RUNNER_NAME} \
+  --executor "<%= p('runner.executor') %>" \
+<% if p('runner.executor') == "docker" then -%>
+  <% if p('runner.docker_privileged') then -%>
+  --docker-privileged \
+  <% end -%>
+  --docker-image <%= p('runner.docker_image') %> \
+  --docker-host <%= p('runner.docker_host') %> \
+<% end -%>
+  --url "<%= p('runner.registration.url') %>" \
+<% if_p('runner.tags') do | tags | -%>
+  --tag-list <%= tags.join(',') %> \
+<% end -%>
+  --builds-dir ${BUILD_DIR} \
+  --cache-dir ${CACHE_DIR} \
+  --env http_proxy="<%= p('env.http_proxy', '') %>" \
+  --env https_proxy="<%= p('env.https_proxy', '') %>" \
+  --env no_proxy="<%= p('env.no_proxy', '') %>" \
+  --registration-token <%= p('runner.registration.token') %>
+
+sed -i -e "s/concurrent *=.*/concurrent = <%= p('runner.concurent') %>/g" /var/vcap/store/gitlab-runner/config.toml

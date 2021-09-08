@@ -1,0 +1,24 @@
+processes:
+  - name: gitlab-runner
+    executable: /var/vcap/packages/gitlab-runner/bin/gitlab-runner
+    env:
+      http_proxy: "<%= p('env.http_proxy', '') %>"
+      https_proxy: "<%= p('env.https_proxy', '') %>"
+      no_proxy: "<%= p('env.no_proxy', '') %>"
+    args:
+      - run
+      - --config
+      - /var/vcap/store/gitlab-runner/config.toml
+      - --working-directory
+      - /var/vcap/store/gitlab-runner
+      - --user
+      - vcap
+    limits:
+      open_files: 1048576
+    persistent_disk: true
+    ephemeral_disk: true
+<% if p('runner.executor') == "docker" then -%>
+    additional_volumes:
+    - path: /var/vcap/sys/run/docker/docker.sock
+      writable: true
+<% end -%>

@@ -1,0 +1,5 @@
+check process gitlab-runner
+  with pidfile   /var/vcap/sys/run/bpm/gitlab-runner/gitlab-runner.pid
+  start program "/var/vcap/jobs/bpm/bin/bpm start gitlab-runner"
+  stop program  "/var/vcap/jobs/bpm/bin/bpm stop  gitlab-runner"
+  group vcap

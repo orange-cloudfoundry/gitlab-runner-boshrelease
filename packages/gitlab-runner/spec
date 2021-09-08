@@ -1,0 +1,7 @@
+---
+name: gitlab-runner
+
+dependencies: []
+
+files:
+  - gitlab-runner-linux-amd64

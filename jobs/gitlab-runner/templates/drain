@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+STORE_DIR=/var/vcap/store/gitlab-runner
+
+<% if_p('env.http_proxy') do | proxy | -%>
+export http_proxy=<%= proxy %>
+<% end -%>
+<% if_p('env.https_proxy') do | proxy | -%>
+export https_proxy=<%= proxy %>
+<% end -%>
+<% if_p('env.no_proxy') do | proxy | -%>
+export no_proxy=<%= proxy %>
+<% end -%>
+
+/var/vcap/packages/gitlab-runner/bin/gitlab-runner unregister \
+  --config ${STORE_DIR}/config.toml \
+  --all-runners
+
+rm -f ${STORE_DIR}/config.toml
+
+echo 0 # sleep for zero seconds
