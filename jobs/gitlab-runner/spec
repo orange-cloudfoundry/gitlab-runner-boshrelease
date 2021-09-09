@@ -14,6 +14,9 @@ properties:
     description: Name of the runner as it will appear in Gitlab
   runner.tags:
     description: Array of runner tags
+  runner.allow_untagged:
+    description: Allow runing unttaged jobs
+    default: false
   runner.registration.url:
     description: URL of Gitlab server to register
   runner.registration.token:

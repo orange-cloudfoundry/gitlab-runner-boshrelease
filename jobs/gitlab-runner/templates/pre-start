@@ -38,6 +38,9 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
 <% if_p('runner.tags') do | tags | -%>
   --tag-list <%= tags.join(',') %> \
 <% end -%>
+<% if_p('runner.allow_untagged') then -%>
+  --run-untagged
+<% end -%>
   --builds-dir ${BUILD_DIR} \
   --cache-dir ${CACHE_DIR} \
   --env http_proxy="<%= p('env.http_proxy', '') %>" \
