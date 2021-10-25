@@ -13,6 +13,8 @@ builds:
     version: 1.0.3
   86866cbf-562e-484b-6c0e-baf7ee3375fd:
     version: 2.0.2
+  ef7657da-2068-41a1-4c63-8bd78a6f04c6:
+    version: 2.1.0
   f919099c-efb9-44eb-446e-55c979ca17fa:
     version: 1.0.1
 format-version: "2"
