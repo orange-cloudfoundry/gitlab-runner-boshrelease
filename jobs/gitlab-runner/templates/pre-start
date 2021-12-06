@@ -48,4 +48,7 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --env no_proxy="<%= p('env.no_proxy', '') %>" \
   --registration-token <%= p('runner.registration.token') %>
 
-sed -i -e "s/concurrent *=.*/concurrent = <%= p('runner.concurent') %>/g" /var/vcap/store/gitlab-runner/config.toml
+sed -i \
+	-e "s/concurrent *=.*/concurrent = <%= p('runner.concurent') %>/g" \
+	-e '/\<environment\>.*proxy/{a\ \ pre_build_script = "mkdir -vp $HOME/.docker/ && echo \\"{ \\\\\\"proxies\\\\\\": { \\\\\\"default\\\\\\": { \\\\\\"httpProxy\\\\\\": \\\\\\"$http_proxy\\\\\\", \\\\\\"httpsProxy\\\\\\": \\\\\\"$https_proxy\\\\\\", \\\\\\"noProxy\\\\\\": \\\\\\"$no_proxy\\\\\\" } } }\\" | tee $HOME/.docker/config.json"' -e '}' \
+	/var/vcap/store/gitlab-runner/config.toml
