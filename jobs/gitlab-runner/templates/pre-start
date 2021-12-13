@@ -24,7 +24,7 @@ export no_proxy=<%= proxy %>
 
 runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --non-interactive \
-  --config ${STORE_DIR}/config.toml \
+  --config "${STORE_DIR}/config.toml" \
   --name ${RUNNER_NAME} \
   --executor "<%= p('runner.executor') %>" \
 <% if p('runner.executor') == "docker" then -%>
@@ -48,4 +48,13 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --env no_proxy="<%= p('env.no_proxy', '') %>" \
   --registration-token <%= p('runner.registration.token') %>
 
-sed -i -e "s/concurrent *=.*/concurrent = <%= p('runner.concurent') %>/g" /var/vcap/store/gitlab-runner/config.toml
+sed -i \
+	-e '/log_format/d' \
+	-e '/log_level/d' \
+	"${STORE_DIR}/config.toml"
+
+sed -i \
+	-e 's/concurrent *=.*/concurrent = <%= p("runner.concurent") %>/g' \
+	-e '/concurrent/alog_format = <%= p("runner.log_format", "info").to_json %>' \
+	-e '/concurrent/alog_level = <%= p("runner.log_level", "info").to_json %>' \
+	"${STORE_DIR}/config.toml"
