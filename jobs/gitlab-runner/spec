@@ -39,6 +39,12 @@ properties:
   runner.append_index:
     description: Whether to append the instance group index to the runner name
     default: false
+  runner.log_level:
+    description: Options are: `debug`, `info`, `warn`, `error`, `fatal`, and `panic`.
+    default: info
+  runner.log_format:
+    description: Options are: `runner`, `text`, and `json`.
+    default: text
   env.http_proxy:
     description: "HTTP proxy to use"
   env.https_proxy:
