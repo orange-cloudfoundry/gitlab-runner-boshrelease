@@ -30,6 +30,12 @@ properties:
   runner.docker_host:
     description: Host when using docker executor
     default: unix:///var/vcap/sys/run/docker/docker.sock
+  runner.docker_pull_policy_always:
+    description: Set "always" to the image pull policy (default).
+    default: true
+  runner.docker_pull_policy_ifnotpresent:
+    description: Set "if-not-present" to the image pull policy.
+    default: false
   runner.docker_privileged:
     description: Should runner run in privileged mode for docker executor
     default: true

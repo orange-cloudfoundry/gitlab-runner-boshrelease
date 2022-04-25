@@ -33,6 +33,12 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   <% end -%>
   --docker-image <%= p('runner.docker_image') %> \
   --docker-host <%= p('runner.docker_host') %> \
+  <% if p('runner.docker_pull_policy_always') then -%>
+  --docker-pull-policy="always" \
+  <% end -%>
+  <% if p('runner.docker_pull_policy_ifnotpresent') then -%>
+  --docker-pull-policy="if-not-present" \
+  <% end -%>
 <% end -%>
   --url "<%= p('runner.registration.url') %>" \
 <% if_p('runner.tags') do | tags | -%>
