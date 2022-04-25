@@ -51,3 +51,6 @@ properties:
     description: "HTTPS proxy to use"
   env.no_proxy:
     description: "List of comma-separated hosts that should skip connecting to the proxy"
+  env.FF_GITLAB_REGISTRY_HELPER_IMAGE:
+    description: "use the GitLab OCI repository when true (default) or the obsolete Docker Hub"
+    default: "1"
