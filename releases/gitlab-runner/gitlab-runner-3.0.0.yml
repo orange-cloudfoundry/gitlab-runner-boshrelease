@@ -1,0 +1,17 @@
+name: gitlab-runner
+version: 3.0.0
+commit_hash: b6118bb
+uncommitted_changes: false
+jobs:
+- name: gitlab-runner
+  version: 2218168d46ebb2f1c24805904095bc3740958c023c27735832ad830f8066ede0
+  fingerprint: 2218168d46ebb2f1c24805904095bc3740958c023c27735832ad830f8066ede0
+  sha1: sha256:a3060ef205a368a7145ff945e083a279f360d110fbe656ff4da31f2785135da5
+  packages:
+  - gitlab-runner
+packages:
+- name: gitlab-runner
+  version: c723567173963048222ea7d632f4de085b2887211363ae63b524b70268ab6d5b
+  fingerprint: c723567173963048222ea7d632f4de085b2887211363ae63b524b70268ab6d5b
+  sha1: sha256:534469f856915b825d5aa1d76314e1a4b96d8160e34b83bd9a51bbdd82888b4c
+  dependencies: []
