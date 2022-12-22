@@ -121,10 +121,6 @@ properties:
     description: "If set, sets vm.max_map_count on VM"
     default: ""
 
-  flannel:
-    description: "Enable flannel support"
-    default: false
-
   registry_ca_cert:
     description: |
       Array of domain names and certificates used to securely communicate with a private docker registry
