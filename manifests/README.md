@@ -1,10 +1,9 @@
 # Deployment
 
-There are three basic use cases supported by the Docker BOSH release:
+There are two basic use cases supported by the Docker BOSH release:
 
 * statically configure and run one or more containers
 * service broker to allow dynamic provisioning of containers
-* docker swarm - manager and many backend docker vms
 
 ## Preparation
 
@@ -95,14 +94,4 @@ Each of your services will be now available in the service catalog/marketplace:
 
 ```
 cf marketplace
-```
-
-## Docker Swarm
-
-The docker swarm deployment includes automatic generation of TLS certificates that are shared between docker + swarm manager:
-
-```
-export BOSH_DEPLOYMENT=docker-swarm
-bosh2 deploy manifests/swarm/docker-swarm.yml \
-  --vars-store tmp/creds.yml
 ```
