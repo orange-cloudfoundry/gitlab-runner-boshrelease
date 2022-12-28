@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 checkenv() {
   trap "exit 0" INT TERM QUIT

@@ -25,19 +25,21 @@ export TMP_DIR=$HOME/sys/tmp/$JOB_NAME
 export TMPDIR=$TMP_DIR
 
 # Load job properties
-if [ -f $JOB_DIR/bin/job_properties.sh ]; then
-  source $JOB_DIR/bin/job_properties.sh
+if [ -f "$JOB_DIR/bin/job_properties.sh" ]; then
+  # shellcheck disable=SC1091
+  source "$JOB_DIR/bin/job_properties.sh"
 fi
 
 for dir in $LOG_DIR $RUN_DIR $STORE_DIR $TMP_DIR
 do
-  mkdir -p ${dir}
-  chown vcap:vcap ${dir}
-  chmod 775 ${dir}
+  mkdir -p "${dir}"
+  chown vcap:vcap "${dir}"
+  chmod 0775 "${dir}"
 done
 
 # Load some control helpers
-source $HOME/packages/bosh-helpers/ctl_utils.sh
+# shellcheck source=./ctl_utils.sh
+source "$HOME/packages/bosh-helpers/ctl_utils.sh"
 
 # Redirect output
-redirect_output ${OUTPUT_LABEL}
+redirect_output "${OUTPUT_LABEL}"

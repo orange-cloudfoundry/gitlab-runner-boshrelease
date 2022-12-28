@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
@@ -6,8 +6,8 @@ STORE_DIR=/var/vcap/store/gitlab-runner
 BUILD_DIR=${STORE_DIR}/builds
 CACHE_DIR=${STORE_DIR}/cache
 
-mkdir -p $BUILD_DIR $CACHE_DIR
-chown -R vcap:vcap ${STORE_DIR}
+mkdir -p "$BUILD_DIR" "$CACHE_DIR"
+chown -R vcap:vcap "${STORE_DIR}"
 
 RUNNER_NAME="<%= p('runner.name') %><% if p("runner.append_index") -%>-<%= spec.index %><% end -%>"
 
@@ -25,7 +25,7 @@ export no_proxy=<%= proxy %>
 runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --non-interactive \
   --config "${STORE_DIR}/config.toml" \
-  --name ${RUNNER_NAME} \
+  --name "${RUNNER_NAME}" \
   --executor "<%= p('runner.executor') %>" \
 <% if p('runner.executor') == "docker" then -%>
   <% if p('runner.docker_privileged') then -%>
@@ -47,8 +47,8 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
 <% if p('runner.allow_untagged') == true then -%>
   --run-untagged \
 <% end -%>
-  --builds-dir ${BUILD_DIR} \
-  --cache-dir ${CACHE_DIR} \
+  --builds-dir "${BUILD_DIR}" \
+  --cache-dir "${CACHE_DIR}" \
   --env http_proxy="<%= p('env.http_proxy', '') %>" \
   --env https_proxy="<%= p('env.https_proxy', '') %>" \
   --env no_proxy="<%= p('env.no_proxy', '') %>" \
