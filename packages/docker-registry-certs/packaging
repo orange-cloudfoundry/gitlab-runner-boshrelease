@@ -1,15 +1,20 @@
-set -eux
+#!/bin/sh
+set -e
+set -u
+set -x
 
-source /var/vcap/packages/golang-1.14-linux/bosh/compile.env
-
-mkdir -p ${BOSH_COMPILE_TARGET}/src/go-src
-mv ${BOSH_COMPILE_TARGET}/go-src/docker-registry-certs ${BOSH_COMPILE_TARGET}/src/go-src/docker-registry-certs
-mv ${BOSH_COMPILE_TARGET}/go-src/vendor ${BOSH_COMPILE_TARGET}/src/go-src/vendor
+GOLANG_VERSION_PATH=$(
+	find /var/vcap/packages -maxdepth 1 -mindepth 1 -name 'golang-*-linux' |
+	sort -Vr |
+	tee /dev/stderr |
+	head -1
+)
+. "${GOLANG_VERSION_PATH}/bosh/compile.env"
 
 export GOPATH=${BOSH_COMPILE_TARGET}
 
-pushd ${BOSH_COMPILE_TARGET}/src/go-src/docker-registry-certs
+cd "${BOSH_COMPILE_TARGET}/src/go-src"
 
 # Create the executable file
-mkdir -p ${BOSH_INSTALL_TARGET}/bin
-go build -o ${BOSH_INSTALL_TARGET}/bin/generate_certs ${BOSH_COMPILE_TARGET}/src/go-src/docker-registry-certs/main.go
+go build -o generate_certs
+install -sDvt "${BOSH_INSTALL_TARGET:?}/bin" generate_certs

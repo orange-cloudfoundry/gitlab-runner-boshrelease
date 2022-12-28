@@ -1,7 +1,6 @@
 ---
 name: docker-registry-certs
 dependencies:
-  - golang-1.14-linux
+  - golang-1.19-linux  # https://github.com/bosh-packages/golang-release/
 files:
-- go-src/docker-registry-certs/**/*
-- go-src/vendor/**/*
+- go-src/*
