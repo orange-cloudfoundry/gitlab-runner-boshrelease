@@ -1,16 +1,13 @@
 #!/bin/bash
 set -eu
 
-# Extract docker package
-DOCKER_PACKAGE=docker
-echo "Extracting docker ..."
-tar xzvf ${BOSH_COMPILE_TARGET}/docker/${DOCKER_PACKAGE}-*.tgz
-if [[ $? != 0 ]] ; then
-  echo "Failed extracting docker"
-  exit 1
-fi
+DOCKER_ARCHIVE=$(
+	find "${BOSH_COMPILE_TARGET:-./}" -maxdepth 3 -not -path '*/.*' -name 'docker*gz' |
+	sort -Vr |
+	tee /dev/stderr |
+	head -1
+)
 
-echo "Copying docker binaries..."
-mkdir -p ${BOSH_INSTALL_TARGET}/bin
-cp docker/* ${BOSH_INSTALL_TARGET}/bin
-chmod +x ${BOSH_INSTALL_TARGET}/bin/*
+mkdir -p "${BOSH_INSTALL_TARGET:?}/bin"
+tar -C "${BOSH_INSTALL_TARGET}/bin" --strip-components 1 -xvf "${DOCKER_ARCHIVE}"
+find "${BOSH_INSTALL_TARGET}/bin" -type f -exec chmod -c +x {} +
