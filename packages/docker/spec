@@ -2,4 +2,4 @@
 name: docker
 dependencies: []
 files:
-  - docker/docker-19.03.14.tgz
+  - docker.tgz

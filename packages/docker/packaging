@@ -1,5 +1,6 @@
-#!/bin/bash
-set -eu
+#!/bin/sh
+set -e
+set -u
 
 DOCKER_ARCHIVE=$(
 	find "${BOSH_COMPILE_TARGET:-./}" -maxdepth 3 -not -path '*/.*' -name 'docker*gz' |

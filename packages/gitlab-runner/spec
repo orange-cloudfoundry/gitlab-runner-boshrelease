@@ -1,7 +1,8 @@
 ---
 name: gitlab-runner
 
-dependencies: []
+dependencies:
+  - docker
 
 files:
   - gitlab-runner-linux-amd64
