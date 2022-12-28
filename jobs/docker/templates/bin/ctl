@@ -54,9 +54,6 @@ case $1 in
       ln -sf "${DOCKER_PID_DIR}/docker.sock" "/var/run/docker.sock"
     fi
 
-    # Create certs for private docker registry
-    /var/vcap/packages/docker-registry-certs/bin/generate_certs ${JOB_DIR}/config/docker_registry_certs
-
     # Start Docker daemon
     exec dockerd \
         ${DOCKER_BRIDGE:-} \
