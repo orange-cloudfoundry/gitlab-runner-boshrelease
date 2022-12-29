@@ -3,3 +3,4 @@ name: docker
 dependencies: []
 files:
   - docker.tgz
+  - docker/*

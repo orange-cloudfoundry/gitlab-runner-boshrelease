@@ -1,0 +1,44 @@
+#!/bin/sh
+
+EXCLUDE=
+k=
+while getopts s:x OPT
+do
+    case "$OPT" in
+    s)
+        case "$OPTARG" in
+            [0-9]) k=$OPTARG;;
+            [Ii][Dd]) k=1;;
+            [Ss]|[Ss]ize) k=2h;;
+            [CcDd]|[Cc]rea*|[Dd]ate) k=3;;
+            [Rr]epo*|[Ii]mage*|[Nn]ame) k=4;;
+            *)
+                printf 'Unknown sort key: "%s"\n' "$OPTARG"
+                return 64
+        esac
+        ;;
+    x) EXCLUDE=1;;
+    ?)
+        printf 'Usage: %s [-s sort-key]\n' "$0"
+        return 64
+    esac
+done
+shift $((OPTIND - 1))
+
+FILTER=""
+for arg in "$@"
+do FILTER="${FILTER}${FILTER:+|}${arg}"
+done
+
+if [ -z "${FILTER##*/*}" ]
+then FILTER="$(echo "$FILTER" | sed 's#/#\\&#g')"
+fi
+
+{
+    printf '#ID Size CreatedAt Repository:Tag\n'
+    docker image ls --format '{{ json . }}' |
+    jq -r '[.ID, .Size, .CreatedAt[0:10]+"T"+.CreatedAt[11:16], .Repository + ":" + .Tag] | join(" ")' |
+    LC_ALL=C sort -k "${k:-2h}"
+} |
+awk "${FILTER:+\$NF ${EXCLUDE:+!}~ /${FILTER}/}{print}" |
+column -t

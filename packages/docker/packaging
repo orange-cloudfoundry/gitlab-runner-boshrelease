@@ -9,6 +9,6 @@ DOCKER_ARCHIVE=$(
 	head -1
 )
 
-mkdir -p "${BOSH_INSTALL_TARGET:?}/bin"
+install -Dv "${BOSH_COMPILE_TARGET:?}/docker/dkr-images" "${BOSH_INSTALL_TARGET:?}/bin/dkr-images"
 tar -C "${BOSH_INSTALL_TARGET}/bin" --strip-components 1 -xvf "${DOCKER_ARCHIVE}"
 find "${BOSH_INSTALL_TARGET}/bin" -type f -exec chmod -c +x {} +
