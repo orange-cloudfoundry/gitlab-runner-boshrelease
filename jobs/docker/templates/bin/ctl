@@ -49,6 +49,9 @@ case $1 in
     [ "${DOCKER_SHARED_MOUNTS_ENABLE}" = "true" ] && mount --make-shared /
 
 
+    # Clean
+    rm -vfr "${DOCKER_PID_DIR}/docker.sock"
+
     # Link the default docker configuration location to the location specified by docker bosh release
     if [[ "${DOCKER_PID_DIR}" != "/var/run" ]]; then
       ln -sf "${DOCKER_PID_DIR}/docker.sock" "/var/run/docker.sock"
