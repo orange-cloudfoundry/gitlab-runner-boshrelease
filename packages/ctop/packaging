@@ -1,0 +1,5 @@
+#!/bin/sh
+set -e
+set -u
+
+install -sDv "${BOSH_COMPILE_TARGET:?}/ctop" "${BOSH_INSTALL_TARGET:?}/bin/ctop"

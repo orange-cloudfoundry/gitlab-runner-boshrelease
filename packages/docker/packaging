@@ -1,0 +1,14 @@
+#!/bin/sh
+set -e
+set -u
+
+DOCKER_ARCHIVE=$(
+	find "${BOSH_COMPILE_TARGET:-./}" -maxdepth 3 -not -path '*/.*' -name 'docker*gz' |
+	sort -Vr |
+	tee /dev/stderr |
+	head -1
+)
+
+install -Dv "${BOSH_COMPILE_TARGET:?}/docker/dkr-images" "${BOSH_INSTALL_TARGET:?}/bin/dkr-images"
+tar -C "${BOSH_INSTALL_TARGET}/bin" --strip-components 1 -xvf "${DOCKER_ARCHIVE}"
+find "${BOSH_INSTALL_TARGET}/bin" -type f -exec chmod -c +x {} +

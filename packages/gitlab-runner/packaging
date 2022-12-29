@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
+set -u
 
-mkdir -p ${BOSH_INSTALL_TARGET}/bin
-
-install gitlab-runner-linux-amd64 ${BOSH_INSTALL_TARGET}/bin/gitlab-runner
+install -vDs gitlab-runner-linux-amd64 "${BOSH_INSTALL_TARGET}/bin/gitlab-runner"
