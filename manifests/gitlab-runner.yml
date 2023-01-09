@@ -1,12 +1,6 @@
 - type: replace
   path: /releases/-
   value:
-    name: docker
-    version: latest
-
-- type: replace
-  path: /releases/-
-  value:
     name: gitlab-runner
     version: latest
 
@@ -20,7 +14,7 @@
     - name: bpm
       release: bpm
     - name: docker
-      release: docker
+      release: gitlab-runner
       properties:
         tcp_address: 0.0.0.0
         tls_cacert: "((docker-tls.ca))"
