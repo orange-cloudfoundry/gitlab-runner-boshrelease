@@ -69,6 +69,8 @@ builds:
     version: 3.4.0
   f919099c-efb9-44eb-446e-55c979ca17fa:
     version: 1.0.1
+  f94623ae-b75a-4572-69bc-e6295e72df05:
+    version: 5.1.1
   ffa0053a-2188-42d3-588c-e231c1f5295c:
     version: 3.2.0
 format-version: "2"
