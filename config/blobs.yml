@@ -3,9 +3,9 @@ ctop:
   object_id: 95624bf2-17fb-4fe1-593f-33acbefa669b
   sha: sha256:b78374734ebe3d14b6edee3d5512c911c250d7fa7f3f964cb00acd3bc5a02a09
 docker.tgz:
-  size: 69797795
-  object_id: 33dca99f-14e6-41df-521a-fe36f0b4a0c3
-  sha: sha256:99792dec613df93169a118b05312a722a63604b868e4c941b1b436abcf3bb70f
+  size: 69831072
+  object_id: 8f53264c-745f-4b4c-64e1-8aafaf2c1243
+  sha: sha256:984d59a77fa6acab97ea725a966facd33725e0e09c2fee975397fe1c6379bd3d
 gitlab-runner-linux-amd64:
   size: 63690581
   object_id: 9d870f89-6bdd-433a-48c5-cd649e2a735e
