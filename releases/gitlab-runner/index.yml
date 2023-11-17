@@ -49,6 +49,8 @@ builds:
     version: 3.5.1
   4c56c61d-890c-46a0-7f07-dbdabcf76ede:
     version: 2.0.1
+  4f1d967d-3924-495b-5120-96064532e10f:
+    version: 9.1.0
   4feeb7ef-8e28-4c49-6636-1ac4362b5873:
     version: 2.6.0
   545bd407-cd13-425c-670e-d2725d0d1c70:
