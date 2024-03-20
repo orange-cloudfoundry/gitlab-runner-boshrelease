@@ -123,6 +123,8 @@ builds:
     version: 6.2.3
   b3e08c1c-d634-4fde-416e-61b09f7aa692:
     version: 8.0.1
+  b761773a-a423-446d-4966-b1ec341e68c7:
+    version: 12.0.0
   c158d089-c6fb-4db6-7de9-a3de955e6a19:
     version: 6.0.1
   c5f5923b-a82e-405f-6f6e-1c1cbd8e25ef:
