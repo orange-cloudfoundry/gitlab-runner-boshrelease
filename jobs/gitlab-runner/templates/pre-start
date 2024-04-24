@@ -53,7 +53,7 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --env https_proxy="<%= p('env.https_proxy', '') %>" \
   --env no_proxy="<%= p('env.no_proxy', '') %>" \
   --env FF_GITLAB_REGISTRY_HELPER_IMAGE="<%= p('env.FF_GITLAB_REGISTRY_HELPER_IMAGE', '1') %>" \
-  --registration-token <%= p('runner.registration.token') %>
+  --token <%= p('runner.registration.token') %>
 
 sed -i \
 	-e '/log_format/d' \

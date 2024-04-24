@@ -57,6 +57,21 @@ case $1 in
       ln -sf "${DOCKER_PID_DIR}/docker.sock" "/var/run/docker.sock"
     fi
 
+	# Create cron jobs (note: in shell, tabs are significant)
+	case "${DOCKER_SYSTEM_PRUNE:-}" in
+	daily|weekly|monthly)
+		cat >"/etc/cron.${DOCKER_SYSTEM_PRUNE}/docker-prune" <<-EOF
+		#!/bin/sh -eu
+		${JOB_DIR}/docker system prune -f
+		EOF
+		chmod -c 0755 "/etc/cron.${DOCKER_SYSTEM_PRUNE}/docker-prune"
+		;;
+	""|never)
+		: ;;
+	*)
+		>&2 echo "warning: unknown prune value: ${DOCKER_SYSTEM_PRUNE}"
+	esac
+
     # Start Docker daemon
     exec dockerd \
         ${DOCKER_BRIDGE:-} \
@@ -137,7 +152,7 @@ case $1 in
       set -e
     fi
 
-    rm -vfr /var/run/docker.sock
+    rm -vfr /var/run/docker.sock /etc/cron.*/docker-prune
     ;;
 
   *)
