@@ -9,6 +9,10 @@ templates:
 packages:
   - gitlab-runner
 
+consumes:
+- name: docker
+  type: docker-tcp
+
 properties:
   runner.name:
     description: Name of the runner as it will appear in Gitlab
