@@ -17,6 +17,8 @@ processes:
       open_files: 1048576
     persistent_disk: true
     ephemeral_disk: true
+    hooks:
+      pre_start: /var/vcap/jobs/gitlab-runner/bin/gitlab-runner-register
 <% if p('runner.executor') == "docker" then -%>
     additional_volumes:
     - path: /var/vcap/sys/run/docker/docker.sock

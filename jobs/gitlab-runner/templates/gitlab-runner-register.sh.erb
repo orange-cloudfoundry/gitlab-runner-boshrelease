@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
@@ -22,9 +22,7 @@ export https_proxy=<%= proxy %>
 export no_proxy=<%= proxy %>
 <% end -%>
 
-for i in 1 2 3
-do
-if ! runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
+runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --non-interactive \
   --config "${STORE_DIR}/config.toml" \
   --name "${RUNNER_NAME}" \
@@ -56,9 +54,6 @@ if ! runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner regis
   --env no_proxy="<%= p('env.no_proxy', '') %>" \
   --env FF_GITLAB_REGISTRY_HELPER_IMAGE="<%= p('env.FF_GITLAB_REGISTRY_HELPER_IMAGE', '1') %>" \
   --token <%= p('runner.registration.token') %>
-then echo "error: during the registration process ($i)"
-fi
-done
 
 sed -i \
 	-e '/log_format/d' \

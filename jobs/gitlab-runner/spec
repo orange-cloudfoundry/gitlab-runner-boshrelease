@@ -3,7 +3,7 @@ name: gitlab-runner
 
 templates:
   bpm.yml: config/bpm.yml
-  pre-start: bin/pre-start
+  gitlab-runner-register.sh.erb: bin/gitlab-runner-register
   drain: bin/drain
 
 packages:
