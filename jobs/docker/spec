@@ -107,6 +107,9 @@ properties:
   shared_mounts_enable:
     description: "Enable shared_mounts"
     default: false
+  prune:
+    description: "Remove unused Docker data at the following interval: daily, weekly, monthly; default: never"
+    default: ""
 
   userland_proxy:
     description: "Use userland proxy for loopback traffic"
