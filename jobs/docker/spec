@@ -15,6 +15,7 @@ templates:
   config/docker.cacert.erb: config/docker.cacert
   config/docker.cert.erb: config/docker.cert
   config/docker.key.erb: config/docker.key
+  pre-start: bin/pre-start
 
 provides:
 - name: docker
