@@ -1,21 +1,20 @@
-#!/bin/bash
-
+#!/bin/sh
+https://bosh.io/docs/scheduled-procs/
 set -e
 
-source /var/vcap/packages/bosh-helpers/ctl_setup.sh 'docker'
+[ -f /var/vcap/jobs/docker/bin/job_properties.sh ] &&
+. /var/vcap/jobs/docker/bin/job_properties.sh
 
 # Create cron jobs (note: in shell, tabs are significant)
 case "${DOCKER_SYSTEM_PRUNE:-}" in
 daily|weekly|monthly)
-	cat >"/etc/cron.${DOCKER_SYSTEM_PRUNE}/docker-prune" <<-EOF
+	install -v -m 0755 /dev/stdin "/etc/cron.${DOCKER_SYSTEM_PRUNE}/docker-prune" <<-EOF
 	#!/bin/sh -eu
 	${JOB_DIR}/packages/docker/bin/docker system prune -f
 	EOF
-	chmod -c 0755 "/etc/cron.${DOCKER_SYSTEM_PRUNE}/docker-prune"
 	;;
 ""|never)
 	: ;;
 *)
 	>&2 echo "warning: unknown prune value: ${DOCKER_SYSTEM_PRUNE}"
 esac
-
