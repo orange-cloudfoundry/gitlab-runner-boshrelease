@@ -1,0 +1,21 @@
+#!/bin/sh
+
+STORE_DIR=/var/vcap/store/gitlab-runner
+
+export CONFIG_FILE="${STORE_DIR}/config.toml"
+export RUNNER_NAME="<%= p('runner.name') %><% if p("runner.append_index") -%>-<%= spec.index %><% end -%>"
+export RUNNER_EXECUTOR="<%= p('runner.executor') %>"
+export CI_SERVER_URL="<%= p('runner.registration.url') %>"
+export CI_SERVER_TOKEN="<%= p('runner.registration.token') %>"
+export RUNNER_BUILDS_DIR="${STORE_DIR}/builds"
+export RUNNER_CACHE_DIR="${STORE_DIR}/cache"
+
+<% if_p('env.http_proxy') do | proxy | -%>
+export http_proxy=<%= proxy %>
+<% end -%>
+<% if_p('env.https_proxy') do | proxy | -%>
+export https_proxy=<%= proxy %>
+<% end -%>
+<% if_p('env.no_proxy') do | proxy | -%>
+export no_proxy=<%= proxy %>
+<% end -%>
