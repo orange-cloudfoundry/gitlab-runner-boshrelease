@@ -177,6 +177,8 @@ builds:
     version: 3.4.0
   f7481246-54fa-4306-6d13-90be72bc6320:
     version: 8.1.0
+  f7ce5db0-4aab-4412-6759-24adddc02fc5:
+    version: 12.3.5
   f919099c-efb9-44eb-446e-55c979ca17fa:
     version: 1.0.1
   f94623ae-b75a-4572-69bc-e6295e72df05:
