@@ -1,0 +1,41 @@
+name: gitlab-runner
+version: 13.0.0
+commit_hash: 4febb45
+uncommitted_changes: false
+jobs:
+- name: docker
+  version: 99ecf2a4780d079e4848ba3a3e096a7a1b46532e12989862d71a41e4bcd7e5c8
+  fingerprint: 99ecf2a4780d079e4848ba3a3e096a7a1b46532e12989862d71a41e4bcd7e5c8
+  sha1: sha256:54d182c72b8ae190b481e9c2fd9f08dc1f78eaba590aee599c2c0acd1532e142
+  packages:
+  - bosh-helpers
+  - docker
+  - ctop
+- name: gitlab-runner
+  version: 4faeaba995fa82d2648067a508aaade1f88e75b8359499529c45a7d5768e2fa6
+  fingerprint: 4faeaba995fa82d2648067a508aaade1f88e75b8359499529c45a7d5768e2fa6
+  sha1: sha256:2ad5b9137e767659bec44f5347d396c576f797e4ca8fbdfabc557993129ec667
+  packages:
+  - gitlab-runner
+packages:
+- name: bosh-helpers
+  version: 2d99848c9799d6c678a5b47091b2ff0f8aa26f88ed668a00a51097cf1e064f09
+  fingerprint: 2d99848c9799d6c678a5b47091b2ff0f8aa26f88ed668a00a51097cf1e064f09
+  sha1: sha256:16f70ff4cd6e5e7a5e680f49655bb6e054d6384ca009b6a155b14fb5d084f0b3
+  dependencies: []
+- name: ctop
+  version: 08d4340b3177a04bfc3391219485002ce57ebb4202d1a938e16b03c05f35e626
+  fingerprint: 08d4340b3177a04bfc3391219485002ce57ebb4202d1a938e16b03c05f35e626
+  sha1: sha256:97c3c1fcf6ae99878f1e0d316e330a9e6f28651bd5c8e5b0da00da23c10247c7
+  dependencies: []
+- name: docker
+  version: dc07f14bc9ded84f31306555665a94be24f334391c2898953a75158c13fda02e
+  fingerprint: dc07f14bc9ded84f31306555665a94be24f334391c2898953a75158c13fda02e
+  sha1: sha256:b066c1ff9f0780a12f468b4bb32decb09c94268c4e44ebdec673b45c286c4c3e
+  dependencies: []
+- name: gitlab-runner
+  version: 76e0520551ea963bd0926845fbcf49ce90a3abda326d87f0f5f3d1c61b7b5bfd
+  fingerprint: 76e0520551ea963bd0926845fbcf49ce90a3abda326d87f0f5f3d1c61b7b5bfd
+  sha1: sha256:84d0d8de3ec261046397accbdb06272a8f9a4e8a884486020cd6d1076f2e25ed
+  dependencies:
+  - docker
