@@ -195,6 +195,8 @@ builds:
     version: 1.0.1
   f94623ae-b75a-4572-69bc-e6295e72df05:
     version: 5.1.1
+  ff42da84-3fa4-47ec-6bb1-3a57ad080fc1:
+    version: 15.0.0
   ffa0053a-2188-42d3-588c-e231c1f5295c:
     version: 3.2.0
 format-version: "2"
