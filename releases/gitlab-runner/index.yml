@@ -155,6 +155,8 @@ builds:
     version: 12.0.0
   bb91be95-2ce6-4845-6bd6-85ec89282e3e:
     version: 12.3.0
+  bbd8cebd-d979-4ba5-7c21-cc6a05362266:
+    version: 15.2.1
   c158d089-c6fb-4db6-7de9-a3de955e6a19:
     version: 6.0.1
   c5f5923b-a82e-405f-6f6e-1c1cbd8e25ef:
