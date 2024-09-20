@@ -11,6 +11,8 @@ builds:
     version: 12.3.3
   045babfe-b521-49d5-47f1-6852cb77d676:
     version: 8.5.0
+  052a891f-cf80-4c9a-5b51-be8d8b736b2e:
+    version: 15.6.1
   06cd361d-49d0-4c12-5fc6-4fa308cd1201:
     version: 13.0.1
   0932b268-3d6e-453f-646b-b984eafc5832:
