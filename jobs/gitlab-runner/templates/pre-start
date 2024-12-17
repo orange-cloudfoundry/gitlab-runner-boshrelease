@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -e
-
-. "/var/vcap/jobs/gitlab-runner/config/environment.sh"
-
-mkdir -p "${RUNNER_BUILDS_DIR}" "${RUNNER_CACHE_DIR}"
-touch "${CONFIG_FILE}"
-chown -R vcap:vcap "${STORE_DIR}"

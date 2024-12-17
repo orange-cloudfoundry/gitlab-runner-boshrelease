@@ -3,40 +3,27 @@ name: gitlab-runner
 
 templates:
   bpm.yml.erb: config/bpm.yml
-  drain.sh.erb: bin/drain
-  environment.sh.erb: config/environment.sh
-  pre-start: bin/pre-start
-  post-start.sh.erb: bin/post-start
+  pre-start.erb: bin/pre-start
+  drain.erb: bin/drain
 
 packages:
   - gitlab-runner
 
-consumes:
-- name: docker
-  type: docker-tcp
-  properties:
-  - tcp_port
-
 properties:
   runner.name:
     description: Name of the runner as it will appear in Gitlab
-  runner.tags:
-    description: Array of runner tags
-  runner.allow_untagged:
-    description: Allow running untagged jobs
-    default: false
   runner.registration.url:
-    description: URL of GitLab server to register
+    description: URL of Gitlab server to register
   runner.registration.token:
     description: Registration token as provided by Gitlab
   runner.executor:
     description: Executor used to run builds
     default: docker
   runner.docker_image:
-    description: Base image for Docker executor
+    description: Base image for docker executor
     default: ubuntu:20.04
   runner.docker_host:
-    description: Host when using Docker executor
+    description: Host when using docker executor
     default: unix:///var/vcap/sys/run/docker/docker.sock
   runner.docker_pull_policy_always:
     description: Set "always" to the image pull policy (default).
@@ -47,8 +34,8 @@ properties:
   runner.docker_privileged:
     description: Should runner run in privileged mode for docker executor
     default: true
-  runner.concurrent:
-    description: Number of concurrent builds
+  runner.concurent:
+    description: Number of concurent builds
     default: 10
   runner.append_index:
     description: Whether to append the instance group index to the runner name

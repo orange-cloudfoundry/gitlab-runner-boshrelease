@@ -2,7 +2,7 @@
 
 set -e
 
-. "/var/vcap/jobs/gitlab-runner/config/environment.sh"
+STORE_DIR=/var/vcap/store/gitlab-runner
 
 <% if_p('env.http_proxy') do | proxy | -%>
 export http_proxy=<%= proxy %>
@@ -15,9 +15,9 @@ export no_proxy=<%= proxy %>
 <% end -%>
 
 /var/vcap/packages/gitlab-runner/bin/gitlab-runner unregister \
-  --config "${CONFIG_FILE}" \
+  --config "${STORE_DIR}/config.toml" \
   --all-runners
 
-:> "${CONFIG_FILE}"
+rm -f "${STORE_DIR}/config.toml"
 
-echo 0
+echo 0 # sleep for zero seconds
