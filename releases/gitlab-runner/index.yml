@@ -73,6 +73,8 @@ builds:
     version: 12.3.7
   4feeb7ef-8e28-4c49-6636-1ac4362b5873:
     version: 2.6.0
+  5121bc9d-c5c3-45a0-4548-9d8e6e2766c3:
+    version: 16.0.0
   542a4f92-99d8-4e8c-6c00-2be2513fb894:
     version: 12.3.4
   545bd407-cd13-425c-670e-d2725d0d1c70:
