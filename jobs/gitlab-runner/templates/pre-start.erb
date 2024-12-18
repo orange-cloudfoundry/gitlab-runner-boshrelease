@@ -5,8 +5,10 @@ set -e
 STORE_DIR=/var/vcap/store/gitlab-runner
 BUILD_DIR=${STORE_DIR}/builds
 CACHE_DIR=${STORE_DIR}/cache
+CONFIG_FILE="${STORE_DIR}/config.toml"
 
 mkdir -p "$BUILD_DIR" "$CACHE_DIR"
+touch "${CONFIG_FILE}"
 chown -R vcap:vcap "${STORE_DIR}"
 
 RUNNER_NAME="<%= p('runner.name') %><% if p("runner.append_index") -%>-<%= spec.index %><% end -%>"
@@ -24,7 +26,7 @@ export no_proxy=<%= proxy %>
 
 runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --non-interactive \
-  --config "${STORE_DIR}/config.toml" \
+  --config "${CONFIG_FILE}" \
   --name "${RUNNER_NAME}" \
   --executor "<%= p('runner.executor') %>" \
 <% if p('runner.executor') == "docker" then -%>
