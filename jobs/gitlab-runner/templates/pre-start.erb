@@ -24,7 +24,7 @@ export https_proxy=<%= proxy %>
 export no_proxy=<%= proxy %>
 <% end -%>
 
-runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
+/var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
   --non-interactive \
   --config "${CONFIG_FILE}" \
   --name "${RUNNER_NAME}" \
@@ -54,10 +54,12 @@ runuser -u vcap -- /var/vcap/packages/gitlab-runner/bin/gitlab-runner register \
 sed -i \
 	-e '/log_format/d' \
 	-e '/log_level/d' \
-	"${STORE_DIR}/config.toml"
+        "${CONFIG_FILE}"
 
 sed -i \
 	-e 's/concurrent *=.*/concurrent = <%= p("runner.concurent") %>/g' \
 	-e '/concurrent/alog_format = <%= p("runner.log_format", "info").to_json %>' \
 	-e '/concurrent/alog_level = <%= p("runner.log_level", "info").to_json %>' \
-	"${STORE_DIR}/config.toml"
+        "${CONFIG_FILE}"
+
+chown -R vcap:vcap "${STORE_DIR}"
