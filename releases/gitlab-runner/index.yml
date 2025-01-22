@@ -191,6 +191,8 @@ builds:
     version: 15.2.1
   c158d089-c6fb-4db6-7de9-a3de955e6a19:
     version: 6.0.1
+  c5560cce-481d-44a0-5e2d-d13cc1fa0431:
+    version: 17.0.0
   c5f5923b-a82e-405f-6f6e-1c1cbd8e25ef:
     version: 10.0.1
   c73e227b-2375-495a-5ebf-72454d2010e3:
