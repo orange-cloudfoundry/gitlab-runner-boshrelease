@@ -121,6 +121,8 @@ builds:
     version: 12.3.2
   6fd230f9-fdfe-4b0d-5469-c8e68b272236:
     version: 2.3.0
+  72eab32d-91c3-44cb-63f8-3e7d89e987e6:
+    version: 18.1.0
   73f17837-eb91-481a-4b8c-a073a27642d9:
     version: 3.1.0
   78433d24-db47-423b-7cd2-fa1b3549798d:
