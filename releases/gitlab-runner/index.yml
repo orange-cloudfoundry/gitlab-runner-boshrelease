@@ -71,6 +71,8 @@ builds:
     version: 18.1.5
   3f02b924-f5fb-41fe-77e4-f0b15e546eda:
     version: 2.2.0
+  3f114eb1-49b2-4c20-6e0e-96e52e9af340:
+    version: 21.2.0
   416bd352-424a-471e-568f-8a9dbb328869:
     version: 2.6.2
   449f6b22-d5a2-4f5c-75cf-2b761aaf9d64:
