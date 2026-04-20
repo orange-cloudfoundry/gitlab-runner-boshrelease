@@ -149,6 +149,8 @@ builds:
     version: 11.0.0
   610a2868-e53b-43a0-60d3-5ceb9625a225:
     version: 17.0.1
+  65952285-c6e1-40e8-7a98-87915ebf1e10:
+    version: 21.10.1
   664488d3-7534-4365-6d92-56729d2f01cc:
     version: 20.3.0
   670dc2e9-55ba-4fb9-7ec2-c58257ddd82c:
