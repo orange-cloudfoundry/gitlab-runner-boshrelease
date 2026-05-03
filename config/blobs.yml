@@ -7,6 +7,6 @@ docker.tgz:
   object_id: fe8f1f1c-ced3-4713-5cd3-1661479da637
   sha: sha256:e985c6dc5008b8d62d6bdf9b5894427d075b335a1391cacf24ee01a7a29a3728
 gitlab-runner-linux-amd64:
-  size: 119034015
-  object_id: eb26e947-3bb4-45e8-5818-bd840c7fe0b3
-  sha: sha256:c331c594462b56d099c89388090ce84d3889afda3d6dfe725bb37d5f500eb9fa
+  size: 119034261
+  object_id: 29e77d1a-9b22-479b-7db1-5af4984db2eb
+  sha: sha256:47d9348eb17c630790fcefb3e6bfd3f04fd70910a6f4d422b47871677dc080d4
