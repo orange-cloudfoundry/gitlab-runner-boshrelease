@@ -319,6 +319,8 @@ builds:
     version: 20.0.2
   d4803f9e-408b-431a-4b91-16834ea57d0b:
     version: 21.1.4
+  d61bd13c-bea8-4bd9-7dde-bf53a2ad568f:
+    version: 21.10.6
   d653285a-12c6-4d52-5d49-52304dcfa047:
     version: 3.0.0
   d91324db-6c84-4dfd-60b2-a7683b9614aa:
