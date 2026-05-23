@@ -129,6 +129,8 @@ builds:
     version: 3.2.1
   55f88bbe-a73b-4567-4c04-55bc9ad5639e:
     version: 21.3.0
+  561d679e-7c0b-49a4-413a-79f4a053f887:
+    version: 22.0.0
   56ad798d-b147-43a2-5500-a834eb96f71d:
     version: 18.1.1
   57502854-0f1a-49ed-788b-ebfa2bef6e3a:
