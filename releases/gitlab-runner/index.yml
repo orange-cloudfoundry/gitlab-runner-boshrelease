@@ -387,6 +387,8 @@ builds:
     version: 8.0.3
   f35c529b-02fa-4d05-61a4-78c6665e3737:
     version: 3.6.1
+  f551ce4c-5a59-46dc-5b14-3be654404e4d:
+    version: 22.2.2
   f7393da5-0c3e-41f8-5bb9-06ca0a93aaf1:
     version: 3.4.0
   f7481246-54fa-4306-6d13-90be72bc6320:
