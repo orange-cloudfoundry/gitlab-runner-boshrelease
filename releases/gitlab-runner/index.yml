@@ -59,6 +59,8 @@ builds:
     version: 20.6.0
   239c0060-6cb4-488f-711c-1c26f0dd97bf:
     version: 8.2.2
+  23e76b11-e029-4d3a-7d26-ea1649401024:
+    version: 22.3.1
   2489aff9-5ec8-4dbc-7b7d-d0970ae412eb:
     version: 7.0.0
   254ca072-d93c-4fd4-6510-dd7ebcda26f8:
