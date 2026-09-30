@@ -83,6 +83,8 @@ builds:
     version: 5.0.1
   32a55004-3e3b-45a0-400a-b1683aaa8e4e:
     version: 3.7.1
+  331d90c9-d98a-4d18-74b5-e3b1b09fc348:
+    version: 24.0.0
   342e6f7f-ced1-4a7e-53b7-eafe293299cb:
     version: 6.1.0
   345ccd2a-5651-4ff0-6362-0a97a88adfb0:
