@@ -123,6 +123,8 @@ builds:
     version: 10.1.0
   4a02029b-db13-4ec6-6105-ac45795979c5:
     version: 18.1.4
+  4a4f8190-fe3a-46da-6e40-f9618b09b8df:
+    version: 24.2.1
   4c56c61d-890c-46a0-7f07-dbdabcf76ede:
     version: 2.0.1
   4d9cecee-856f-41ed-548d-438265c65e2a:
