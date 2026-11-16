@@ -233,6 +233,8 @@ builds:
     version: 10.1.1
   7e90b076-ddd9-4c1a-645e-6c87e0fc3683:
     version: 21.2.2
+  7f306cfb-3148-476c-6b0a-b616675ddc2e:
+    version: 25.1.0
   80a756c0-2fb6-46d1-6a09-1b8044a5e34d:
     version: 20.5.1
   80fbf510-88ac-46c5-4216-b818f1dbaede:
